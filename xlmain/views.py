@@ -1,31 +1,33 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-from openpyxl import Workbook,load_workbook
-import os
+from .models import CSE,ECE,CHEM,CIVIL,MECH,MME
 
+
+def result(name,b):
+    return {
+    "headings" :name.keys(),
+    "rows" : [item.values() for item in name.objects.all()],
+    "branch":b
+    }
 # Create your views here.
-def result(branch):
-    wb=load_workbook(os.path.dirname(__file__)+"/E1S2.xlsx")
-    return { "rows":wb[branch].rows }
-
 def home(request):
-    return HttpResponse("<h1>add / + branch to url </h1>")
-
+    items =  CIVIL.objects.all()
+    print(dir(items[0]))
+    return render(request,"home.html")
 def cse(request):
-    return render(request,"index.html",result("CSE"))
-
+    return render(request,"results.html",result(CSE,"cse"))
 def ece(request):
-    return render(request,"index.html",result("ECE"))
+    return render(request,"results.html",result(ECE,"ece"))
 
 def mech(request):
-    return render(request,"index.html",result("MECH"))
+    return render(request,"results.html",result(MECH,'mech'))
 
 def civil(request):
-    return render(request,"index.html",result("CIVIL"))
+    return render(request,"results.html",result(CIVIL,'civil'))
 
 def mme(request):
-    return render(request,"index.html",result("MME"))
+    return render(request,"results.html",result(MME,'mme'))
 
 def chem(request):
-    return render(request,"index.html",result("CHEM"))
+    return render(request,"results.html",result(CHEM,'chem'))
 

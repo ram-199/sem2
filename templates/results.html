@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+{% load custom_tags %}
+    <input type="text" id="input" onkeyup="search()" name="search_text" placeholder="enter ID or Name">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            {% for heading in headings %}
+            <th scope="col"> {{heading}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows%}
+        <tr class="ramrow">
+            {% for col in row%}
+            <td>{{col}}</td>
+            {% endfor %}
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+{%endblock%}

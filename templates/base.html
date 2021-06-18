@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1S2 Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+
+    <style>
+        table thead tr th {
+            position: sticky;
+            z-index: 100;
+            top: 0;
+            left: 0;
+        }
+
+        table tr td:first-child,
+        table tr td:last-child {
+            top: 0;
+            font-weight: bold;
+            position: sticky;
+            z-index: 10;
+            left: 0;
+            background-color: antiquewhite;
+        }
+
+        table tr td:last-child {
+            top: 0;
+            font-weight: bold;
+            position: sticky;
+            z-index: 10;
+            right: 0;
+            background-color: antiquewhite;
+        }
+
+        table thead tr th:first-child {
+            position: sticky;
+            z-index: 101;
+            left: 0;
+        }
+
+        table thead tr th:last-child {
+            background-color: antiquewhite;
+            color: black;
+            position: sticky;
+            z-index: 101;
+            right: 0;
+        }
+
+        html {
+            font-size: smaller;
+        }
+
+        td,
+        tr {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-family: 'Original Surfer', cursive;
+            text-align: center;
+            color: red;
+            margin: 5% auto 0%;
+        }
+
+        a {
+            font-family: 'Original Surfer';
+            font-weight: bolder;
+            margin: 2%;
+        }
+
+        .top {
+            margin-top: 6%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        table {
+            padding: 0;
+            margin-top: 0;
+        }
+        input{
+            position: sticky;
+            float: right;
+            clear: both;
+            margin: 1%;
+            border-radius: 0;
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+
+    {%endblock%}
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function search() {
+        var input = document.getElementById('input').value.toUpperCase();
+        var items = document.getElementsByClassName("ramrow")
+        console.log(items[0].innerText.toUpperCase())
+        for(i=0;i<items.length;i++){
+            if(items[i].innerText.toUpperCase().indexOf(input)>-1 ){
+                items[i].style.display = ""
+            }else{
+                items[i].style.display = "none" 
+            }
+        }
+        
+    }
+</script>
+
+</html>
